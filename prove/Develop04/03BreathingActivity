@@ -1,0 +1,33 @@
+using System;
+
+namespace MindfulnessApp
+{
+    public class BreathingActivity : Activity
+    {
+        public BreathingActivity()
+        {
+            description = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
+        }
+
+        // Perform breathing activity
+        public void PerformBreathing()
+        {
+            for (int i = 0; i < duration / 10; i++) // Assuming 10 seconds per breath cycle
+            {
+                Console.Clear();
+                Console.WriteLine("Breathe in...");
+                Pause(5); // Wait for 5 seconds
+                Console.Clear();
+                Console.WriteLine("Breathe out...");
+                Pause(5); // Wait for 5 seconds
+            }
+        }
+
+        public override void EndActivity()
+        {
+            Console.Clear();
+            Console.WriteLine($"Good job! You completed the Breathing Activity for {duration} seconds.");
+            Pause(3);
+        }
+    }
+}
