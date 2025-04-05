@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create a new planner and a user
+        Planner planner = new Planner();
+        User user = new User("John Doe");
+
+        // User creates some events
+        user.CreateEvent(planner, "Project Meeting", DateTime.Now.AddDays(1), "Conference Room", "Discuss project milestones");
+        user.CreateEvent(planner, "Birthday Party", DateTime.Now.AddDays(2), "Park");
+
+        // View all events
+        Console.WriteLine("All Events:");
+        user.ViewEvents(planner);
+
+        // Search for an event by title
+        Console.WriteLine("\nSearch for 'Meeting':");
+        user.SearchEvents(planner, "Meeting");
+
+        // Notify the user about an event
+        Console.WriteLine("\nSending Notifications:");
+        EmailNotification email = new EmailNotification("Reminder: Your event is tomorrow!", "john.doe@example.com");
+        email.SendNotification();
+
+        SMSNotification sms = new SMSNotification("Reminder: Your event is tomorrow!", "123-456-7890");
+        sms.SendNotification();
+
+        // Display events for today
+        Console.WriteLine("\nEvents for Today:");
+        var eventsToday = planner.GetEventsForDay(DateTime.Now);
+        foreach (var e in eventsToday)
+        {
+            e.DisplayDetails();
+        }
+    }
+}
