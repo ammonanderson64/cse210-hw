@@ -1,0 +1,33 @@
+using System;
+
+public class User
+{
+    public string Name { get; set; }
+
+    public User(string name)
+    {
+        Name = name;
+    }
+
+    public void CreateEvent(Planner planner, string title, DateTime date, string location, string agenda = null)
+    {
+        if (agenda == null)
+        {
+            planner.AddEvent(new RegularEvent(title, date, location));
+        }
+        else
+        {
+            planner.AddEvent(new MeetingEvent(title, date, location, agenda));
+        }
+    }
+
+    public void ViewEvents(Planner planner)
+    {
+        planner.DisplayEvents();
+    }
+
+    public void SearchEvents(Planner planner, string title)
+    {
+        planner.SearchEventByTitle(title);
+    }
+}
