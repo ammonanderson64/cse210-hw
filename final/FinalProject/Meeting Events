@@ -1,0 +1,17 @@
+using System;
+
+public class MeetingEvent : CalendarEvent
+{
+    public string Agenda { get; set; }
+
+    public MeetingEvent(string title, DateTime date, string location, string agenda)
+        : base(title, date, location)
+    {
+        Agenda = agenda;
+    }
+
+    public override void DisplayDetails()
+    {
+        Console.WriteLine($"Meeting Event: {Title} at {Location} on {Date.ToShortDateString()}\nAgenda: {Agenda}");
+    }
+}
