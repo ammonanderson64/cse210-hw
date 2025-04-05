@@ -1,0 +1,17 @@
+using System;
+
+public abstract class CalendarEvent
+{
+    public string Title { get; set; }
+    public DateTime Date { get; set; }
+    public string Location { get; set; }
+
+    public CalendarEvent(string title, DateTime date, string location)
+    {
+        Title = title;
+        Date = date;
+        Location = location;
+    }
+
+    public abstract void DisplayDetails();  // Abstract method for event display
+}
