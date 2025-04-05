@@ -1,0 +1,17 @@
+using System;
+
+public class SMSNotification : Notification
+{
+    public string PhoneNumber { get; set; }
+
+    public SMSNotification(string message, string phoneNumber)
+        : base(message)
+    {
+        PhoneNumber = phoneNumber;
+    }
+
+    public override void SendNotification()
+    {
+        Console.WriteLine($"Sending SMS to {PhoneNumber} with message: {Message}");
+    }
+}
