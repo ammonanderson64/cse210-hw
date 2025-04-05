@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+public class Planner
+{
+    private List<CalendarEvent> events;
+
+    public Planner()
+    {
+        events = new List<CalendarEvent>();
+    }
+
+    public void AddEvent(CalendarEvent calendarEvent)
+    {
+        events.Add(calendarEvent);
+    }
+
+    public void DisplayEvents()
+    {
+        foreach (var calendarEvent in events)
+        {
+            calendarEvent.DisplayDetails();
+        }
+    }
+
+    public void SearchEventByTitle(string title)
+    {
+        foreach (var calendarEvent in events)
+        {
+            if (calendarEvent.Title.Contains(title, StringComparison.OrdinalIgnoreCase))
+            {
+                calendarEvent.DisplayDetails();
+            }
+        }
+    }
+
+    public List<CalendarEvent> GetEventsForDay(DateTime day)
+    {
+        List<CalendarEvent> dailyEvents = new List<CalendarEvent>();
+        foreach (var calendarEvent in events)
+        {
+            if (calendarEvent.Date.Date == day.Date)
+            {
+                dailyEvents.Add(calendarEvent);
+            }
+        }
+        return dailyEvents;
+    }
+}
