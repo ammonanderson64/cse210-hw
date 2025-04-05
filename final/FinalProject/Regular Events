@@ -1,0 +1,12 @@
+using System;
+
+public class RegularEvent : CalendarEvent
+{
+    public RegularEvent(string title, DateTime date, string location)
+        : base(title, date, location) { }
+
+    public override void DisplayDetails()
+    {
+        Console.WriteLine($"Regular Event: {Title} at {Location} on {Date.ToShortDateString()}");
+    }
+}
